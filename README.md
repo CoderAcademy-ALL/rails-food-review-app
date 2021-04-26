@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Products
+- id:bigint PRIMARY KEY
+-  name:string
+-  brand:string
+-  price:integer
+-  description:text
 
-Things you may want to cover:
+User
+- id:bigint PRIMARY KEY
+- name
+- email
 
-* Ruby version
+Review
+- id:bigint PRIMARY KEY
+-  review_rating:integer
+-  review:text
+-  product_id:bigint FOREIGN KEY
+-  user_id:bigint FOREIGN KEY
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
