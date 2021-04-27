@@ -1,0 +1,30 @@
+<h2><%= title %></h2>
+
+<ul>
+  <% product.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
+<%= form_with model: product, local: true do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :brand_id %>
+    <%= form.collection_select(:brand_id, Brand.all, :id, :name) %>
+  </div>
+  <%= form.submit %>
+
+<% end %>
