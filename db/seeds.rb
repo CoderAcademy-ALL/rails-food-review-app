@@ -13,6 +13,7 @@ Brand.destroy_all
 Tag.destroy_all
 puts 'Records destroyed'
 
+puts '-' * 20
 puts 'Populating Users'
 User.create(
   full_name: 'Daniel', 
@@ -36,6 +37,7 @@ User.create(
 )
 puts 'User populated'
 
+puts '-' * 20
 puts 'Seeding brands'
 4.times do |i|
   brand = Brand.create(name: "Brand#{i}")
@@ -51,6 +53,7 @@ puts 'Seeding brands'
 end
 puts 'Brands seeded'
 
+puts '-' * 20
 rating_array = [{text: 'Nice', rating: 5},{text: 'Pretty Good', rating: 4}, {text: 'ok', rating:  3}, {text: 'could be better', rating: 2}, {text: 'bad', rating: 1}, { text: 'terrible', rating: 0 }]
 puts 'Seeding reviews'
 20.times do
@@ -60,3 +63,6 @@ puts 'Seeding reviews'
   product: Product.all.sample)
 end
 puts 'Reviews seeded'
+puts '-' * 20
+
+puts 'Seeding completed'
