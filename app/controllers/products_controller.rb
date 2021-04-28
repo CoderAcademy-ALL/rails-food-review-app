@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show,:edit,:update,:destroy]
+  before_action :check_session
 
   def index
     if params[:query].nil?
@@ -58,5 +59,12 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def check_session
+    puts session[:user_id]
+    return unless session[:user_id].nil?
+
+    redirect_to users_path
   end
 end
