@@ -46,7 +46,7 @@ puts 'Seeding brands'
     brand.products.create(
     name: Faker::Food.fruits, 
     description: Faker::Food.description,
-    price: rand(100..10_000),
+    price: rand(1.00..100.00),
   )
   puts 'Products seeded'
   end
