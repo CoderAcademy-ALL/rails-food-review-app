@@ -2,7 +2,16 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show,:edit,:update,:destroy]
 
   def index
-    @products = Product.all
+    if params[:query].nil?
+      @products = Product.all
+    else
+      @products = Product.price_less_than(params[:query].to_i)
+    end
+  end
+
+  def cheap
+    @products = Product.cheap
+    render :index
   end
 
   def new

@@ -1,9 +1,10 @@
 <h1>Products</h1>
-<ul>
-<% @products.each do |product|%>
-<li>
-<%= link_to product.name, product%>
-</li>
-<% end %>
-</ul>
+  <ul>
+    <% @products.each do |product|%>
+    <li>
+      <%= link_to product.name, product%>
+    </li>
+    <% end %>
+  </ul>
 <%= link_to 'Add a new Product', new_product_path, class:'btn btn-primary m-2' %>
+<%= link_to 'Cheap Fruits', "#{products_path}?query=10", class:'btn'%>

@@ -6,6 +6,9 @@ class Product < ApplicationRecord
 
   validates :name, :price, presence: true
 
+  scope :cheap, -> { where('price < 10') } 
+  scope :price_less_than, ->(max_price) { where('price < ?', max_price).or(where(name: 'Goji Berry')) }
+
   def average_rating
     avg_rating = reviews.reduce(0) do |sum, review|
       sum + review.rating
