@@ -1,3 +1,5 @@
-<h1>Edit <%= @product.name %></h1>
+<div class="d-flex flex-column justify-content-center align-items-center new-product-layout">
+<h1 >Edit <span class='text-dark-purple'><%= @product.name %></span></h1>
 
 <%= render 'form', product: @product, brands: @brands, title: 'This is the EDIT PAGE!' %>
+</div>

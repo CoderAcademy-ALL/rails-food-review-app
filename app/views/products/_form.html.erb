@@ -1,4 +1,3 @@
-<h2><%= title %></h2>
 
 <ul>
   <% product.errors.full_messages.each do |message| %>
@@ -6,25 +5,25 @@
   <% end %>
 </ul>
 
-<%= form_with model: product, local: true do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<%= form_with model: product, local: true, class:'m-4 product-form' do |form| %>
+  <div class='mb-3'>
+    <%= form.label :name, class:'form-label' %>
+    <%= form.text_field :name, class:'form-control' %>
   </div>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :price %>
-    <%= form.number_field :price, step: 0.05 %>
+  <div class='mb-3'>
+    <%= form.label :description, class:'form-label' %>
+    <%= form.text_area :description, class:'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :brand_id %>
-    <%= form.collection_select(:brand_id, Brand.all, :id, :name) %>
+  <div class='mb-3'>
+    <%= form.label :price, class:'form-label'  %>
+    <%= form.number_field :price, step: 0.05, class:'form-control' %>
   </div>
-  <%= form.submit %>
+
+  <div class='mb-3'>
+    <%= form.label :brand_id, class:'form-label'  %>
+    <%= form.collection_select(:brand_id, Brand.all, :id, :name,{}, {class:'form-select form-select-lg mb-3'}) %>
+  </div>
+  <%= form.submit class:'btn btn-primary'%>
 
 <% end %>
