@@ -1,10 +1,12 @@
 <div class="d-flex flex-column justify-content-center align-items-center new-product-layout">
-  <h1>Users#index</h1>
-  <%= flash[:error] %>
-  <p>Find me in app/views/users/index.html.erb</p>
+  <h1>Log in</h1>
+  <p>Please enter your name:</p>
   <%= form_with url: '/session', method: :post do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name %>
     <%= form.submit %>
+  <% end %>
+  <% if flash[:error] %>
+    <p class='alert alert-danger'><%= flash[:error] %></p>
   <% end %>
 </div>

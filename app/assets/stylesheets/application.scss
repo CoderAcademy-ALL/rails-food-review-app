@@ -14,4 +14,22 @@
  *= require_self
  */
 
-@import 'bootstrap/scss/bootstrap'
+@import "bootstrap/scss/bootstrap";
+
+a,
+a:hover,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-card {
+  transition: all 0.5s;
+  width: 18rem; 
+  height: 18rem;
+}
+
+.product-card:hover {
+  background: #555;
+  color: wheat;
+}

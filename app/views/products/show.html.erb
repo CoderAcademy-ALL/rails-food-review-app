@@ -1,21 +1,37 @@
-<h1><%= @product.name %></h1>
-<h4><%= @product.average_rating %> / 5</h4>
-
-<h5><%= number_to_currency(@product.price) %></h5>
-
-<%= link_to edit_product_path(@product) do %>
-
-<div class="edit-box">
-  <div class="circle"></div>
+<div class='d-flex flex-column justify-content-center align-items-center'>
+  <h1><%= @product.name %></h1>
+  <h4><%= @product.average_rating %> / 5</h4>
+  <p><%= @product.description %></p>
+  <h5><%= number_to_currency(@product.price) %></h5>
+  <%= link_to edit_product_path(@product) do %>
+    <div class="edit-box">
+      <div class="circle"></div>
+    </div>
+  <% end %>
+  <p><%= link_to 'DESTROY', @product, method: :delete,
+              data: { confirm: 'Are you sure?' }, class:'btn btn-danger m-1' %></p>
+  <% @product.reviews.each do |review|%>
+    <div class="card mt-2">
+      <div class='card-body'>
+        <p class='d-flex justify-content-between'><span><%= review.review_text %></span><span>Rating: <%= review.rating %></span></p>
+      </div>
+      <p class='card-footer'><%= review.user.full_name %> reviewed this <%= time_ago_in_words(review.created_at) %> ago</p>
+    </div>
+  <%end%>
+  <div class="mt-2 review-form">
+  <h2>Write a review:</h2>
+  <%= form_with model: [ @product, @product.reviews.build ] do |form| %>
+    <p>
+      <%= form.label :review_text, class:'form-label' %><br>
+      <%= form.text_area :review_text, class:'form-control'%>
+    </p>
+    <p>
+      <%= form.label :rating, class:'form-label'%><br>
+      <%= form.number_field :rating, in: 0..5, class:'form-control' %>
+    </p>
+    <p>
+      <%= form.submit class:'btn btn-primary' %>
+    </p>
+  <% end %>
+  </div>
 </div>
-
-<% end %>
-
-<p><%= link_to 'DESTROY', @product, method: :delete,
-              data: { confirm: 'Are you sure?' } %></p>
-
-<% @product.reviews.each do |review|%>
-  <h5><%= review.user.full_name %> <%= time_ago_in_words(review.created_at) %></h5>
-  <p><%= review.review_text %></p>
-  <p>Rating: <%= review.rating %></p>
-<%end%>
